@@ -26,9 +26,14 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # -v дает полный лог, --accept-sdk-license заменяет команду 'yes'
-          buildozer -v android debug --accept-sdk-license
-
+          # 1. Сначала принимаем все лицензии Android SDK вручную
+          # Путь к sdkmanager внутри папки buildozer
+          mkdir -p $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin
+          # Эта команда автоматически говорит "y" на все запросы лицензий
+          yes | $HOME/.android/repository/tools/bin/sdkmanager --licenses || true
+          
+          # 2. Запускаем сборку
+          buildozer -v android debug
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
