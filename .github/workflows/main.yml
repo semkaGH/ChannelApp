@@ -26,7 +26,8 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          yes | buildozer android debug
+          # Мы добавили -v (verbose), чтобы видеть реальную ошибку, если она случится
+          buildozer -v android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
