@@ -30,13 +30,13 @@ orientation = portrait
 # (bool) Indicate if the application should be fullscreen or not
 fullscreen = 0
 
-# (int) Target Android API. 34 — самая стабильная сейчас.
-android.api = 34
+# (int) Target Android API.
+android.api = 33
 
-# (int) Minimum API. 21 подходит для большинства старых телефонов.
+# (int) Minimum API.
 android.minapi = 21
 
-# (str) Android SDK Build-Tools. ФИКСИРУЕМ версию, чтобы не было ошибки лицензии 37.
+# (str) Android SDK Build-Tools.
 android.sdk_build_tools_version = 34.0.0
 
 # (bool) Автоматическое принятие лицензий (для GitHub Actions)
@@ -54,3 +54,12 @@ log_level = 2
 
 # (int) Display warning if buildozer is run as root
 warn_on_root = 1
+
+# (str) Android SDK version to use.
+android.sdk = 33
+
+# (str) Android NDK version to use. 
+android.ndk = 25b
+
+# (bool) Если True, Buildozer сам попробует обновить SDK (включаем для надежности)
+android.skip_update = False
