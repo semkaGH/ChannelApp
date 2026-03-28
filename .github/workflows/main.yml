@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-22.04 
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v4
@@ -26,8 +26,8 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # Мы добавили -v (verbose), чтобы видеть реальную ошибку, если она случится
-          buildozer -v android debug
+          # -v дает полный лог, --accept-sdk-license заменяет команду 'yes'
+          buildozer -v android debug --accept-sdk-license
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
