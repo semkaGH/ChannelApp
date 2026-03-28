@@ -26,11 +26,10 @@ jobs:
       - name: Build with Buildozer
         run: |
           export PATH=$PATH:$HOME/.local/bin
-          # 1. Сначала принимаем все лицензии Android SDK вручную
-          # Путь к sdkmanager внутри папки buildozer
-          mkdir -p $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest/bin
-          # Эта команда автоматически говорит "y" на все запросы лицензий
-          yes | $HOME/.android/repository/tools/bin/sdkmanager --licenses || true
+          # Принудительно устанавливаем старые cmdline-tools, которые понимает Buildozer
+          mkdir -p $HOME/.buildozer/android/platform/android-sdk/cmdline-tools/latest
+          # Запускаем сборку
+          buildozer -v android debug
           
           # 2. Запускаем сборку
           buildozer -v android debug
